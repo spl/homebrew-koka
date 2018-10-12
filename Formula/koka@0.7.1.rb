@@ -24,12 +24,6 @@ class KokaAT071 < Formula
     sha256 "2b02ba397c0478bf9244903c2dd524396ada9ea8db7fc091fe58597e2bccfc62"
   end
 
-  # Fix include path
-  patch do
-    url "https://raw.githubusercontent.com/spl/homebrew-koka/master/patch/koka-0.7.1-include-path.patch"
-    sha256 "cfa72f520445fa63302e0475551f4b3ce638c3c74399f4a1f5d81421f049fc77"
-  end
-
   def install
     ENV["VERSION"] = "#{version}"
     ENV["VARIANT"] = "release"
@@ -49,7 +43,7 @@ class KokaAT071 < Formula
     (bin/"koka-#{version}").write <<~SH
       #!/bin/bash
       cd /usr/local/lib/koka-#{version}
-      koka-bin-#{version} "$@"
+      koka-bin-#{version} -ilib "$@"
     SH
   end
 
