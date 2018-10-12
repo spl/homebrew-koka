@@ -7,7 +7,7 @@ index 45ea58d..f91da6b 100644
  
  extern include {
 -  js file "contrib/biginteger.js"
-+  js file "../../contrib/biginteger.js"
++  js file "../contrib/biginteger.js"
  }
  
  
