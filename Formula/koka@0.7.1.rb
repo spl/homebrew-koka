@@ -1,6 +1,6 @@
 require "language/haskell"
 
-class Koka < Formula
+class KokaAT071 < Formula
   include Language::Haskell::Cabal
 
   desc "Function-oriented language seperating pure values from side-effects"
