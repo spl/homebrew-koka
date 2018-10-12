@@ -7,7 +7,6 @@ class KokaAT071 < Formula
   homepage "https://github.com/koka-lang/koka"
   url "https://github.com/koka-lang/koka/archive/v0.7.1.tar.gz"
   sha256 "86ec61d7293e4d417d518b7181e97fc6d798c66bc025277ca9a92354f80dd02f"
-  head "https://github.com/koka-lang/koka.git"
 
   depends_on "cabal-install" => :build
   depends_on "ghc" => :build
