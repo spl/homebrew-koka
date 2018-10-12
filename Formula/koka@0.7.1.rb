@@ -24,6 +24,12 @@ class KokaAT071 < Formula
     sha256 "2b02ba397c0478bf9244903c2dd524396ada9ea8db7fc091fe58597e2bccfc62"
   end
 
+  # Fix include path (-i)
+  patch do
+    url "https://raw.githubusercontent.com/spl/homebrew-koka/master/patch/koka-0.7.1-include-path.patch"
+    sha256 "ce36d8c00f979ce841097bfa94516da7132e4959c154edd8d9a271cd00db5589"
+  end
+
   def install
     ENV["VERSION"] = "#{version}"
     ENV["VARIANT"] = "release"

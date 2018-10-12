@@ -1,0 +1,15 @@
+diff --git a/src/Compiler/Options.hs b/src/Compiler/Options.hs
+index f040f23..0705387 100644
+--- a/src/Compiler/Options.hs
++++ b/src/Compiler/Options.hs
+@@ -354,7 +354,9 @@ processOptions flags0 opts
+                         else if (null files) then ModeInteractive files
+                                              else ModeCompiler files
+              in do pkgs <- discoverPackages (outDir flags)
+-                   return (flags{ packages = pkgs },mode) 
++                   installDir <- getInstallDir
++                   return (flags { packages = pkgs,
++                                   includePath = joinPath installDir "lib" : includePath flags }, mode)
+         else invokeError errs
+   
+ extractFlags :: Flags -> [Option] -> Flags
