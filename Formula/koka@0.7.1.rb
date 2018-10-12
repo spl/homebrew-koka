@@ -27,7 +27,7 @@ class KokaAT071 < Formula
   # Fix include path
   patch do
     url "https://raw.githubusercontent.com/spl/homebrew-koka/master/patch/koka-0.7.1-include-path.patch"
-    sha256 "c070f5190c0cf74665f650f6cb3e7958a2b6766e734bef720047f57c55c35c38"
+    sha256 "cfa72f520445fa63302e0475551f4b3ce638c3c74399f4a1f5d81421f049fc77"
   end
 
   def install
