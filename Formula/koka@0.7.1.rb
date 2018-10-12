@@ -35,7 +35,7 @@ class KokaAT071 < Formula
     (lib/"koka-#{version}").install Dir["contrib", "lib"]
 
     # Move the executable for the wrapper script below.
-    (bin/"koka").rename (lib/"koka")
+    (bin/"koka").rename (lib/"koka-#{version}"/"koka")
 
     # Koka has hardcoded dependencies on being at the same level as the library.
     # We would prefer using just -i<lib-dir>, but that doesn't fix the problem.
