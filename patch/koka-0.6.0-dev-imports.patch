@@ -1,0 +1,290 @@
+diff --git a/src/Backend/CSharp/FromCore.hs b/src/Backend/CSharp/FromCore.hs
+index ef49a5a..9d5539a 100644
+--- a/src/Backend/CSharp/FromCore.hs
++++ b/src/Backend/CSharp/FromCore.hs
+@@ -14,6 +14,8 @@ module Backend.CSharp.FromCore( csharpFromCore
+                               -- , arityMapInit, externalMapInit 
+                               ) where
+ 
++import Prelude hiding ((<>))
++
+ import Control.Applicative hiding (empty)
+ import Control.Monad
+ import Data.Char( isDigit )
+diff --git a/src/Backend/JavaScript/FromCore.hs b/src/Backend/JavaScript/FromCore.hs
+index 379aff8..17eb638 100644
+--- a/src/Backend/JavaScript/FromCore.hs
++++ b/src/Backend/JavaScript/FromCore.hs
+@@ -10,6 +10,8 @@ module Backend.JavaScript.FromCore
+       ( javascriptFromCore )
+  where
+ 
++import Prelude hiding ((<>))
++
+ import Control.Applicative hiding (empty)
+ import Control.Monad
+ import Data.List ( intersperse )
+diff --git a/src/Common/Error.hs b/src/Common/Error.hs
+index e0c509e..7bab91e 100644
+--- a/src/Common/Error.hs
++++ b/src/Common/Error.hs
+@@ -13,6 +13,8 @@ module Common.Error( Error, ErrorMessage(..), errorMsg, ok
+                    , catchError, checkError, warningMsg, addWarnings
+                    , ppErrorMessage, errorWarning ) where
+ 
++import Prelude hiding ((<>))
++
+ import Control.Monad
+ import Control.Applicative
+ import Lib.PPrint
+diff --git a/src/Common/Message.hs b/src/Common/Message.hs
+index 1fc15e4..975c9a5 100644
+--- a/src/Common/Message.hs
++++ b/src/Common/Message.hs
+@@ -16,6 +16,8 @@ module Common.Message(
+                      , docFromRange, docsFromRanges
+                      ) where
+ 
++import Prelude hiding ((<>))
++
+ import Data.Char      ( isSpace )
+ import Lib.PPrint     
+ import Common.Failure (failure)
+diff --git a/src/Compiler/Compile.hs b/src/Compiler/Compile.hs
+index 866aa68..5bc62e0 100644
+--- a/src/Compiler/Compile.hs
++++ b/src/Compiler/Compile.hs
+@@ -28,6 +28,8 @@ module Compiler.Compile( -- * Compile
+                        , CompileTarget(..)
+                        ) where
+ 
++import Prelude hiding ((<>))
++
+ import Lib.Trace              ( trace )
+ import Data.Char              ( isAlphaNum )
+ 
+diff --git a/src/Compiler/Options.hs b/src/Compiler/Options.hs
+index ef01301..b84376c 100644
+--- a/src/Compiler/Options.hs
++++ b/src/Compiler/Options.hs
+@@ -19,6 +19,7 @@ module Compiler.Options( -- * Command line options
+                        , prettyIncludePath
+                        ) where
+ 
++import Prelude hiding ((<>))
+ 
+ import Data.Char              ( toUpper )
+ import Data.List              ( intersperse )
+diff --git a/src/Compiler/Package.hs b/src/Compiler/Package.hs
+index 13a06e8..0807723 100644
+--- a/src/Compiler/Package.hs
++++ b/src/Compiler/Package.hs
+@@ -17,6 +17,8 @@ module Compiler.Package( Packages, PackageName
+                        , joinPkg
+                        ) where
+ 
++import Prelude hiding ((<>))
++
+ import Data.Char        ( toLower )
+ import Lib.PPrint
+ import Data.List        ( intersperse, replicate, sort )
+diff --git a/src/Core/Pretty.hs b/src/Core/Pretty.hs
+index bb04c6e..8aefa6f 100644
+--- a/src/Core/Pretty.hs
++++ b/src/Core/Pretty.hs
+@@ -11,6 +11,8 @@
+ 
+ module Core.Pretty( prettyCore ) where
+ 
++import Prelude hiding ((<>))
++
+ import Data.Char( isAlphaNum )
+ import Common.Name
+ import Common.ColorScheme
+diff --git a/src/Interpreter/Command.hs b/src/Interpreter/Command.hs
+index 4e9e29f..5d6cafb 100644
+--- a/src/Interpreter/Command.hs
++++ b/src/Interpreter/Command.hs
+@@ -16,6 +16,8 @@ module Interpreter.Command
+               , commandHelp
+               ) where
+ 
++import Prelude hiding ((<>))
++
+ import Data.Char         ( isSpace, toLower )
+ import Data.List         ( isPrefixOf )
+ import Lib.PPrint   ( Doc, text,vcat,(<->),hang,empty,fill,(<>),color)
+diff --git a/src/Interpreter/Interpret.hs b/src/Interpreter/Interpret.hs
+index a7eb56b..92a9a5f 100644
+--- a/src/Interpreter/Interpret.hs
++++ b/src/Interpreter/Interpret.hs
+@@ -11,6 +11,8 @@
+ -----------------------------------------------------------------------------
+ module Interpreter.Interpret( interpret ) where
+ 
++import Prelude hiding ((<>))
++
+ import Lib.Trace
+ 
+ 
+diff --git a/src/Kind/Assumption.hs b/src/Kind/Assumption.hs
+index 58b3237..ee5cf01 100644
+--- a/src/Kind/Assumption.hs
++++ b/src/Kind/Assumption.hs
+@@ -27,7 +27,7 @@ module Kind.Assumption (
+                     ) where
+ 
+ import qualified Data.List as L
+-import Prelude        hiding (filter,lookup,map)
++import Prelude        hiding (filter,lookup,map,(<>))
+ import Lib.PPrint     hiding (empty)
+ import Common.ColorScheme
+ import Common.QNameMap
+diff --git a/src/Kind/Constructors.hs b/src/Kind/Constructors.hs
+index fbd84b7..73eb249 100644
+--- a/src/Kind/Constructors.hs
++++ b/src/Kind/Constructors.hs
+@@ -22,6 +22,8 @@ module Kind.Constructors( -- * Constructors
+                           , ppConstructors
+                           ) where
+ 
++import Prelude hiding ((<>))
++
+ import qualified Data.List as L
+ import qualified Common.NameMap as M
+ import qualified Common.NameSet as S
+diff --git a/src/Kind/Infer.hs b/src/Kind/Infer.hs
+index dc9da17..57f20df 100644
+--- a/src/Kind/Infer.hs
++++ b/src/Kind/Infer.hs
+@@ -22,6 +22,8 @@
+ 
+ module Kind.Infer (inferKinds) where
+ 
++import Prelude hiding ((<>))
++
+ import Lib.Trace
+ -- import Type.Pretty
+ 
+diff --git a/src/Kind/InferMonad.hs b/src/Kind/InferMonad.hs
+index 9e6f2a9..f8b8a5d 100644
+--- a/src/Kind/InferMonad.hs
++++ b/src/Kind/InferMonad.hs
+@@ -22,6 +22,7 @@ module Kind.InferMonad( KInfer
+                       , infQualifiedName
+                       )  where
+ 
++import Prelude hiding ((<>))
+ 
+ import Control.Applicative
+ import Control.Monad
+diff --git a/src/Kind/Newtypes.hs b/src/Kind/Newtypes.hs
+index 1c990ea..b5cad83 100644
+--- a/src/Kind/Newtypes.hs
++++ b/src/Kind/Newtypes.hs
+@@ -20,6 +20,8 @@ module Kind.Newtypes( -- * Type newtypes
+                     -- , ppNewtypes
+                     ) where
+ 
++import Prelude hiding ((<>))
++
+ import qualified Common.NameMap as M
+ import Common.Failure( failure )
+ import Common.Name
+diff --git a/src/Kind/Pretty.hs b/src/Kind/Pretty.hs
+index 9bd4236..92258c6 100644
+--- a/src/Kind/Pretty.hs
++++ b/src/Kind/Pretty.hs
+@@ -15,6 +15,8 @@ module Kind.Pretty( -- * Pretty
+                   , colorKind, kindColon
+                   ) where
+ 
++import Prelude hiding ((<>))
++
+ import Lib.PPrint
+ import Common.ColorScheme
+ import Common.Name
+diff --git a/src/Lib/PPrint.hs b/src/Lib/PPrint.hs
+index 44bee7e..6587713 100644
+--- a/src/Lib/PPrint.hs
++++ b/src/Lib/PPrint.hs
+@@ -59,6 +59,8 @@ module Lib.PPrint
+         , isEmptyDoc
+         ) where
+ 
++import Prelude hiding ((<>))
++
+ import System.IO           -- (Handle,hPutStr,hPutChar,stdout,openFile,hClose)
+ import Lib.Printer  
+ import Platform.Runtime( finally )
+@@ -567,4 +569,4 @@ indentation n  = spaces n
+                 
+ defaultWidth :: Int
+ defaultWidth = 200
+-             
+\ No newline at end of file
++             
+diff --git a/src/Static/FixityResolve.hs b/src/Static/FixityResolve.hs
+index ee6c606..0f89399 100644
+--- a/src/Static/FixityResolve.hs
++++ b/src/Static/FixityResolve.hs
+@@ -17,6 +17,8 @@ module Static.FixityResolve( fixityResolve
+                            )
+                            where
+ 
++import Prelude hiding ((<>))
++
+ -- import Lib.Trace
+ import Control.Applicative
+ import Control.Monad
+diff --git a/src/Type/Assumption.hs b/src/Type/Assumption.hs
+index 1b34f6a..79d7944 100644
+--- a/src/Type/Assumption.hs
++++ b/src/Type/Assumption.hs
+@@ -34,6 +34,8 @@ module Type.Assumption (
+                     , getArity
+                     ) where
+ 
++import Prelude hiding ((<>))
++
+ import Common.Range
+ import Common.Failure
+ import Common.Syntax( DefSort(..) )
+diff --git a/src/Type/InfGamma.hs b/src/Type/InfGamma.hs
+index d996caf..87e63b5 100644
+--- a/src/Type/InfGamma.hs
++++ b/src/Type/InfGamma.hs
+@@ -24,6 +24,8 @@ module Type.InfGamma (
+                     , infgammaExtendX
+                     ) where
+ 
++import Prelude hiding ((<>))
++
+ import Lib.PPrint
+ import qualified Common.NameMap as M
+ 
+diff --git a/src/Type/InferMonad.hs b/src/Type/InferMonad.hs
+index 9a1f86e..c031e7c 100644
+--- a/src/Type/InferMonad.hs
++++ b/src/Type/InferMonad.hs
+@@ -62,6 +62,8 @@ module Type.InferMonad( Inf, InfGamma
+                       , addRangeInfo
+                       ) where
+ 
++import Prelude hiding ((<>))
++
+ import Data.List( partition, sortBy)
+ import Control.Applicative
+ import Control.Monad
+diff --git a/src/Type/Pretty.hs b/src/Type/Pretty.hs
+index 66e4073..e3f45e5 100644
+--- a/src/Type/Pretty.hs
++++ b/src/Type/Pretty.hs
+@@ -18,6 +18,7 @@ module Type.Pretty (-- * Pretty
+                    , prettyComment
+                    ) where
+ 
++import Prelude hiding ((<>))
+ 
+ import Data.Char( isSpace )
+ import qualified Data.Map as M
