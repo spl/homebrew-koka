@@ -28,11 +28,12 @@ class KokaAT071 < Formula
     ENV["VERSION"] = "#{version}"
     ENV["VARIANT"] = "release"
 
-    install_cabal_package "--bindir=#{prefix}/_bin", :using => "alex"
+    install_cabal_package :using => "alex"
+    (bin/"koka").rename (bin/"koka-bin-#{version}")
     (lib/"koka-#{version}").install Dir["lib/*"]
     (bin/"koka-#{version}").write <<~SH
       #!/bin/bash
-      #{prefix}/_bin/koka-#{version} -i/usr/local/lib/koka-#{version} "$@"
+      koka-bin-#{version} -i/usr/local/lib/koka-#{version} "$@"
     SH
   end
 
