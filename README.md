@@ -1,6 +1,6 @@
-# Homebrew Formula for Koka
+# Homebrew Formulae for Koka
 
-This is a [Homebrew] formula for [Koka].
+These are [Homebrew] formulae for different versions of [Koka].
 
 [Homebrew]: https://brew.sh/
 [Koka]: https://github.com/koka-lang/koka
