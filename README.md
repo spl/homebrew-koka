@@ -5,16 +5,18 @@ This is a [Homebrew] formula for [Koka].
 [Homebrew]: https://brew.sh/
 [Koka]: https://github.com/koka-lang/koka
 
-## v0.7.1
+## Installation and running
 
-Install:
+### v0.6.0-dev
+
+```
+$ brew install spl/koka/koka@0.6.0-dev
+$ koka-0.6.0-dev
+```
+
+### v0.7.1
 
 ```
 $ brew install spl/koka/koka@0.7.1
-```
-
-Run:
-
-```
 $ koka-0.7.1
 ```
