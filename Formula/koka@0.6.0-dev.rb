@@ -6,6 +6,7 @@ class KokaAT060Dev < Formula
   desc "Function-oriented language seperating pure values from side-effects"
   homepage "https://github.com/koka-lang/koka"
   url "https://github.com/koka-lang/koka/archive/v0.6.0-dev.tar.gz"
+  version "0.6.0-dev"
   sha256 "a83445caafbf82bacf43defd367320c7848c2cdac4b2cf27ddaf57262a19a911"
 
   depends_on "cabal-install" => :build
