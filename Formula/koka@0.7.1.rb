@@ -27,7 +27,7 @@ class KokaAT071 < Formula
   # Fix include path (-i)
   patch do
     url "https://raw.githubusercontent.com/spl/homebrew-koka/master/patch/koka-0.7.1-include-path.patch"
-    sha256 "ce36d8c00f979ce841097bfa94516da7132e4959c154edd8d9a271cd00db5589"
+    sha256 "c070f5190c0cf74665f650f6cb3e7958a2b6766e734bef720047f57c55c35c38"
   end
 
   def install
@@ -36,7 +36,7 @@ class KokaAT071 < Formula
 
     install_cabal_package :using => "alex"
     (bin/"koka").rename (bin/"koka-bin-#{version}")
-    (lib/"koka-#{version}").install Dir["lib/*"]
+    (lib/"koka-#{version}").install Dir["contrib", "lib/*"]
     (bin/"koka-#{version}").write <<~SH
       #!/bin/bash
       koka-bin-#{version} -i/usr/local/lib/koka-#{version} "$@"

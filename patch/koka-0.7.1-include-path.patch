@@ -1,3 +1,16 @@
+diff --git a/lib/std/core.kk b/lib/std/core.kk
+index 45ea58d..f91da6b 100644
+--- a/lib/std/core.kk
++++ b/lib/std/core.kk
+@@ -40,7 +40,7 @@ extern include {
+ }
+ 
+ extern include {
+-  js file "contrib/biginteger.js"
++  js file "../../contrib/biginteger.js"
+ }
+ 
+ 
 diff --git a/src/Compiler/Options.hs b/src/Compiler/Options.hs
 index f040f23..0705387 100644
 --- a/src/Compiler/Options.hs
@@ -13,3 +26,16 @@ index f040f23..0705387 100644
          else invokeError errs
    
  extractFlags :: Flags -> [Option] -> Flags
+diff --git a/src/Syntax/Parse.hs b/src/Syntax/Parse.hs
+index 3b66085..2521d65 100644
+--- a/src/Syntax/Parse.hs
++++ b/src/Syntax/Parse.hs
+@@ -395,7 +395,7 @@ externalIncludeEntry
+     preadFile :: FilePath -> FilePath -> LexParser String
+     preadFile fname currentFile
+       = do pos <- getPosition
+-           let fpath      = if (null (dirname fname)) then joinPath (dirname currentFile) fname else fname
++           let fpath      = joinPath (dirname currentFile) fname
+                mbContent  = unsafePerformIO $ exCatch (do{ content <- readFile fpath; return (Just content) }) (\exn -> return Nothing)
+            case mbContent of
+              Just content -> return content
