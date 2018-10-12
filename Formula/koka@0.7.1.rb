@@ -24,19 +24,15 @@ class KokaAT071 < Formula
     sha256 "2b02ba397c0478bf9244903c2dd524396ada9ea8db7fc091fe58597e2bccfc62"
   end
 
-  def wrapper_script
-    <<~EOS
-      #!/bin/bash
-      #{prefix}/_bin/koka -i#{lib} "$@"
-    EOS
-  end
-
   def install
     ENV["VERSION"] = "#{version}"
     ENV["VARIANT"] = "release"
 
     install_cabal_package "--bindir=#{prefix}/_bin", :using => "alex"
-    (bin/"koka").write wrapper_script
+    (bin/"koka").write <<~SH
+      #!/bin/bash
+      #{prefix}/_bin/koka -i#{lib} "$@"
+    SH
     (lib/"koka").install Dir["lib/*"]
   end
 
