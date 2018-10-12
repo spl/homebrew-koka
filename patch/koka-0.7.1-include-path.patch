@@ -11,31 +11,3 @@ index 45ea58d..f91da6b 100644
  }
  
  
-diff --git a/src/Compiler/Options.hs b/src/Compiler/Options.hs
-index f040f23..0705387 100644
---- a/src/Compiler/Options.hs
-+++ b/src/Compiler/Options.hs
-@@ -354,7 +354,9 @@ processOptions flags0 opts
-                         else if (null files) then ModeInteractive files
-                                              else ModeCompiler files
-              in do pkgs <- discoverPackages (outDir flags)
--                   return (flags{ packages = pkgs },mode) 
-+                   installDir <- getInstallDir
-+                   return (flags { packages = pkgs,
-+                                   includePath = joinPath installDir "lib" : includePath flags }, mode)
-         else invokeError errs
-   
- extractFlags :: Flags -> [Option] -> Flags
-diff --git a/src/Syntax/Parse.hs b/src/Syntax/Parse.hs
-index 3b66085..2521d65 100644
---- a/src/Syntax/Parse.hs
-+++ b/src/Syntax/Parse.hs
-@@ -395,7 +395,7 @@ externalIncludeEntry
-     preadFile :: FilePath -> FilePath -> LexParser String
-     preadFile fname currentFile
-       = do pos <- getPosition
--           let fpath      = if (null (dirname fname)) then joinPath (dirname currentFile) fname else fname
-+           let fpath      = joinPath (dirname currentFile) fname
-                mbContent  = unsafePerformIO $ exCatch (do{ content <- readFile fpath; return (Just content) }) (\exn -> return Nothing)
-            case mbContent of
-              Just content -> return content

@@ -24,7 +24,7 @@ class KokaAT071 < Formula
     sha256 "2b02ba397c0478bf9244903c2dd524396ada9ea8db7fc091fe58597e2bccfc62"
   end
 
-  # Fix include path (-i)
+  # Fix include path
   patch do
     url "https://raw.githubusercontent.com/spl/homebrew-koka/master/patch/koka-0.7.1-include-path.patch"
     sha256 "c070f5190c0cf74665f650f6cb3e7958a2b6766e734bef720047f57c55c35c38"
@@ -34,12 +34,22 @@ class KokaAT071 < Formula
     ENV["VERSION"] = "#{version}"
     ENV["VARIANT"] = "release"
 
+    # Build and install the package.
     install_cabal_package :using => "alex"
-    (bin/"koka").rename (bin/"koka-bin-#{version}")
+
+    # Install the contrib and lib directories.
     (lib/"koka-#{version}").install Dir["contrib", "lib/*"]
+
+    # Rename the executable so that we can use the wrapper script below.
+    (bin/"koka").rename (bin/"koka-bin-#{version}")
+
+    # Koka has hardcoded dependencies on being at the same level as the library.
+    # We would rather to use -i<lib-dir>, but that doesn't fix the problem.
+    # Consequently, we run Koka directly in the library directory.
     (bin/"koka-#{version}").write <<~SH
       #!/bin/bash
-      koka-bin-#{version} -i/usr/local/lib/koka-#{version} "$@"
+      cd /usr/local/lib/koka-#{version}
+      koka-bin-#{version} "$@"
     SH
   end
 
