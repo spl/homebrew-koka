@@ -38,7 +38,7 @@ class KokaAT071 < Formula
     install_cabal_package :using => "alex"
 
     # Install the contrib and lib directories.
-    (lib/"koka-#{version}").install Dir["contrib", "lib/*"]
+    (lib/"koka-#{version}").install Dir["contrib", "lib"]
 
     # Rename the executable so that we can use the wrapper script below.
     (bin/"koka").rename (bin/"koka-bin-#{version}")
