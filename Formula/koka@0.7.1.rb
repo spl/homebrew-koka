@@ -43,6 +43,7 @@ class KokaAT071 < Formula
     (bin/"koka-#{version}").write <<~SH
       #!/bin/bash
       cd /usr/local/lib/koka-#{version}
+      echo "Running in '$PWD' ..."
       ./koka -ilib "$@"
     SH
   end
