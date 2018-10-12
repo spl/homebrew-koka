@@ -13,7 +13,7 @@ index 0000000..2d548e7
 +extra-source-files:  readme.md
 +cabal-version:       >=1.10
 +
-+executable koka-core
++executable koka
 +  main-is:             Main.hs
 +  other-extensions:    CPP, OverloadedStrings
 +  build-depends:       base >=4.9 && <5
