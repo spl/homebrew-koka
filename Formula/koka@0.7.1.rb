@@ -34,16 +34,16 @@ class KokaAT071 < Formula
     # Install the contrib and lib directories.
     (lib/"koka-#{version}").install Dir["contrib", "lib"]
 
-    # Rename the executable so that we can use the wrapper script below.
-    (bin/"koka").rename (bin/"koka-bin-#{version}")
+    # Move the executable for the wrapper script below.
+    (bin/"koka").rename (lib/"koka")
 
     # Koka has hardcoded dependencies on being at the same level as the library.
-    # We would rather to use -i<lib-dir>, but that doesn't fix the problem.
+    # We would prefer using just -i<lib-dir>, but that doesn't fix the problem.
     # Consequently, we run Koka directly in the library directory.
     (bin/"koka-#{version}").write <<~SH
       #!/bin/bash
       cd /usr/local/lib/koka-#{version}
-      koka-bin-#{version} -ilib "$@"
+      ./koka -ilib "$@"
     SH
   end
 
