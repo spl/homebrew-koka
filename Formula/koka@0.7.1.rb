@@ -15,7 +15,7 @@ class KokaAT071 < Formula
   # Add a koka.cabal file for building with cabal-install.
   patch do
     url "https://raw.githubusercontent.com/spl/homebrew-koka/master/patch/koka-0.7.1-cabal.patch"
-    sha256 "dc7fe0b9a3b0a342e454da1e898f8a3524c1b5edaaf7a60d451d29a73c1e6034"
+    sha256 "f853bde17a83ce18a601c2fc5ce85dab1debcb5d4190b4dc058798cd123c0aca"
   end
 
   # Hide the (<>) Prelude import to work with newer GHC versions.
