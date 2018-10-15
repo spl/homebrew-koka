@@ -5,7 +5,7 @@ class Madoko < Formula
   homepage "..."
   url "https://github.com/koka-lang/madoko.git",
     :revision => "5cee03a0e38177792635153dccc7616e34ed475b"
-  sha256 "..."
+  version "1.1.6"
 
   depends_on "node"
   depends_on "spl/koka/koka@0.6.0-dev" => :build
