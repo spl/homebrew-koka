@@ -1,0 +1,13 @@
+diff --git a/lib/std/core.kk b/lib/std/core.kk
+index 45ea58d..adab422 100644
+--- a/lib/std/core.kk
++++ b/lib/std/core.kk
+@@ -40,7 +40,7 @@ extern include {
+ }
+ 
+ extern include {
+-  js file "contrib/biginteger.js"
++  js file "/usr/local/lib/koka-0.7.1/contrib/biginteger.js"
+ }
+ 
+ 

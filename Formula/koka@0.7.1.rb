@@ -23,6 +23,12 @@ class KokaAT071 < Formula
     sha256 "2b02ba397c0478bf9244903c2dd524396ada9ea8db7fc091fe58597e2bccfc62"
   end
 
+  # Make the contrib/biginteger.js path absolute.
+  patch do
+    url "koka-0.7.1-std-core.patch"
+    sha256 "2d0ccc442a46e13c10ef7aa0a2a13c1e2252d1c52434373bf4cfff6ccb4d2260"
+  end
+
   def install
     ENV["VERSION"] = "#{version}"
     ENV["VARIANT"] = "release"
