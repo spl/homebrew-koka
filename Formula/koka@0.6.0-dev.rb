@@ -31,30 +31,35 @@ class KokaAT060Dev < Formula
     # Build and install the package.
     install_cabal_package :using => "alex"
 
+    # koka with version appended
+    koka_ver = "koka-#{version}"
+
     # Install the contrib and lib directories.
-    (lib/"koka-#{version}").install Dir["contrib", "lib"]
+    (lib/koka_ver).install Dir["contrib", "lib"]
 
     # Move the executable for the wrapper script below.
-    (bin/"koka").rename (lib/"koka-#{version}"/"koka")
+    (bin/"koka").rename (lib/koka_ver/"koka")
 
     # Absolute Koka library directory path
-    absdir = "#{HOMEBREW_PREFIX}/lib/koka-#{version}"
+    absdir = "#{HOMEBREW_PREFIX}/lib/#{koka_ver}"
 
     # Koka expects include paths to be relative. We convert the absolute library
     # path to a relative path using Python: https://stackoverflow.com/a/7305217
-    (bin/"koka-#{version}").write <<~SH
+    (bin/koka_ver).write <<~EOS
       #!/bin/bash
       RELDIR=$(python -c "import os.path,sys; assert sys.version_info>=(2,6); print os.path.relpath('#{absdir}/lib','.')")
       #{absdir}/koka -i$RELDIR "$@"
-    SH
+    EOS
   end
 
-  def caveats; <<~EOS
-    Include paths (via -i or --include) must be relative to the current path. In
-    particular, you should prepend the appropriate number of ../ to paths such
-    as /usr/local/lib/koka-#{version} to make an absolute path relative. See the
-    formula for an alternative method using Python.
-  EOS
+  def caveats
+    <<~EOS
+      Include paths (via -i or --include) must be relative to the current path.
+      In particular, you should prepend the appropriate number of ../ to paths
+      such as /usr/local/lib/#{koka_ver} to make an absolute path relative.
+
+      See the formula for an alternative method using Python.
+    EOS
   end
 
 end
