@@ -56,7 +56,7 @@ class KokaAT060Dev < Formula
     <<~EOS
       Include paths (via -i or --include) must be relative to the current path.
       In particular, you should prepend the appropriate number of ../ to paths
-      such as /usr/local/lib to make an absolute path relative.
+      such as /usr/local/lib/#{koka_ver} to make an absolute path relative.
 
       See the formula for an alternative method using Python.
     EOS
