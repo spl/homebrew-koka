@@ -54,5 +54,6 @@ class KokaAT071 < Formula
     as /usr/local/lib/koka-#{version} to make an absolute path relative. See the
     formula for an alternative method using Python.
   EOS
+  end
 
 end
