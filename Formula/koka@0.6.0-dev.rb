@@ -49,7 +49,7 @@ class KokaAT060Dev < Formula
     SH
   end
 
-  caveats <<~EOS
+  def caveats <<~EOS
     Include paths (via -i or --include) must be relative to the current path. In
     particular, you should prepend the appropriate number of ../ to paths such
     as /usr/local/lib/koka-#{version} to make an absolute path relative. See the
