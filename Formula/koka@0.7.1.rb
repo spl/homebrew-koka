@@ -36,15 +36,23 @@ class KokaAT071 < Formula
     # Move the executable for the wrapper script below.
     (bin/"koka").rename (lib/"koka-#{version}"/"koka")
 
-    # Koka has hardcoded dependencies on being at the same level as the library.
-    # We would prefer using just -i<lib-dir>, but that doesn't fix the problem.
-    # Consequently, we run Koka directly in the library directory.
+    # Absolute Koka library directory path
+    absdir = "#{HOMEBREW_PREFIX}/lib/koka-#{version}"
+
+    # Koka expects include paths to be relative. We convert the absolute library
+    # path to a relative path using Python: https://stackoverflow.com/a/7305217
     (bin/"koka-#{version}").write <<~SH
       #!/bin/bash
-      cd /usr/local/lib/koka-#{version}
-      echo "Running in '$PWD' ..."
-      ./koka -ilib "$@"
+      RELDIR=$(python -c "import os.path,sys; assert sys.version_info>=(2,6); print os.path.relpath('#{absdir}/lib','.')")
+      #{absdir}/koka -i$RELDIR "$@"
     SH
   end
+
+  caveats <<~EOS
+    Include paths (via -i or --include) must be relative to the current path. In
+    particular, you should prepend the appropriate number of ../ to paths such
+    as /usr/local/lib/koka-#{version} to make an absolute path relative. See the
+    formula for an alternative method using Python.
+  EOS
 
 end
