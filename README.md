@@ -11,6 +11,13 @@ This repository contains [Homebrew] formulae for the following:
 [Koka]: https://github.com/koka-lang/koka
 [Madoko]: https://www.madoko.net/
 
+The reason for the existence of this [Homebrew tap] is to make it easier to
+install Koka and, especially, Madoko, which is built with Koka. The current
+release of Madoko is very old, and building it from source is not easy and
+requires an old version of Koka.
+
+[Homebrew tap]: https://docs.brew.sh/Taps
+
 ## Installation and running
 
 ### Koka
@@ -48,8 +55,14 @@ $ koka-0.6.0-dev
 This is the HEAD revision as of the time of writing. The last release, which is
 very old, is available with `npm install -g madoko`.
 
-Note that Madoko is built with `koka-0.6.0-dev`. Installing the `madoko` formula
+Note: Madoko is built with `koka-0.6.0-dev`. Installing the `madoko` formula
 will also install the `koka@0.6.0-dev` formula.
+
+Note: Building Madoko may consume a large amount of memory. On my system with 16
+GB of RAM, it took upwards of 18.3 GB. See [koka-lang/madoko#10] for discussion
+of this issue.
+
+[koka-lang/madoko#10]: https://github.com/koka-lang/madoko/issues/10
 
 ```
 $ brew install spl/koka/madoko
