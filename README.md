@@ -1,9 +1,11 @@
 # Homebrew Formulae for Koka and Madoko
 
-These are [Homebrew] formulae for [Koka], a function-oriented strongly-typed
-language that separates pure values from side-effecting computations, and
-[Madoko], a markdown processor for academic documents that produces PDF and
-HTML.
+This repository contains [Homebrew] formulae for the following:
+
+* [Koka] is a function-oriented strongly-typed language that separates pure
+  values from side-effecting computations.
+* [Madoko] is a markdown processor for academic documents that produces PDF and
+  HTML.
 
 [Homebrew]: https://brew.sh/
 [Koka]: https://github.com/koka-lang/koka
@@ -20,7 +22,7 @@ $ brew install spl/koka/koka@0.6.0-dev
 $ koka-0.6.0-dev
 ```
 
-#### Koka v0.7.1
+#### v0.7.1
 
 ```
 $ brew install spl/koka/koka@0.7.1
