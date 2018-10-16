@@ -29,8 +29,8 @@ $ koka-0.7.1
 
 ### Madoko
 
-Note that Madoko depends on `koka-0.6.0-dev` and will install that formula
-first.
+Note that Madoko is built with `koka-0.6.0-dev`. Installing the `madoko` formula
+will also install the `koka@0.6.0-dev` formula.
 
 ```
 $ brew install spl/koka/madoko
